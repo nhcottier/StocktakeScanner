@@ -7,60 +7,62 @@
   <style>
     :root {
       color-scheme: light dark;
-      --accent: #287c9b;
-      --bg: #f7fafb;
+      --accent: #087d99;
+      --accent-strong: #066983;
+      --accent-soft: #dff3f7;
+      --bg: #f3f8fa;
       --text: #172026;
       --muted: #5e6971;
       --panel: #ffffff;
       --border: #d8e4e9;
+      --shadow: 0 18px 50px rgba(29, 64, 78, 0.11);
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #101518;
+        --accent: #42bdd8;
+        --accent-strong: #86dded;
+        --accent-soft: #15313a;
+        --bg: #0e1518;
         --text: #edf4f6;
         --muted: #a7b4bb;
         --panel: #182126;
         --border: #2b3a41;
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.32);
       }
     }
 
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent-soft) 80%, transparent) 0, transparent 320px),
+        var(--bg);
       color: var(--text);
       line-height: 1.55;
     }
 
     main {
-      max-width: 760px;
+      max-width: 980px;
       margin: 0 auto;
-      padding: 48px 22px;
+      padding: 56px 24px;
     }
 
     h1 {
       margin: 0 0 10px;
-      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-size: clamp(2.35rem, 7vw, 4.8rem);
       line-height: 1.05;
       letter-spacing: 0;
     }
 
     h2 {
-      margin: 32px 0 10px;
-      font-size: 1.25rem;
+      margin: 42px 0 14px;
+      font-size: clamp(1.35rem, 3vw, 1.85rem);
+      line-height: 1.15;
     }
 
     p {
       margin: 0 0 16px;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    li {
-      margin: 8px 0;
     }
 
     h3 {
@@ -74,15 +76,89 @@
     }
 
     .panel {
-      margin-top: 28px;
-      padding: 22px;
+      margin-top: 30px;
+      padding: 28px;
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 8px;
+      box-shadow: var(--shadow);
     }
 
     .muted {
       color: var(--muted);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: center;
+      padding: 34px;
+      background: color-mix(in srgb, var(--panel) 86%, var(--accent-soft));
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero p:not(.eyebrow) {
+      max-width: 760px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2.1vw, 1.25rem);
+    }
+
+    .app-icon {
+      width: clamp(88px, 13vw, 132px);
+      height: clamp(88px, 13vw, 132px);
+      border-radius: 8px;
+      box-shadow: 0 16px 32px rgba(8, 125, 153, 0.24);
+    }
+
+    .section-kicker {
+      margin: 0 0 4px;
+      color: var(--accent-strong);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .contact-panel h2 {
+      margin-top: 0;
+    }
+
+    .contact-panel p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      color: #ffffff;
+      background: var(--accent);
+      border-radius: 8px;
+      text-decoration: none;
+      white-space: nowrap;
     }
 
     .walkthrough {
@@ -119,15 +195,17 @@
 
     .faq-detail {
       margin: 14px 0 18px;
-      padding: 16px 18px;
+      padding: 20px 22px;
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 8px;
+      box-shadow: 0 10px 28px rgba(29, 64, 78, 0.08);
     }
 
     .faq-detail summary {
       cursor: pointer;
       font-weight: 700;
+      font-size: 1.05rem;
     }
 
     .faq-detail summary:focus-visible {
@@ -145,9 +223,62 @@
       color: var(--muted);
     }
 
+    .question-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .question-card {
+      padding: 20px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .question-card h3 {
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .question-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .privacy-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 18px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
     @media (max-width: 620px) {
       main {
-        padding: 34px 18px;
+        padding: 22px 16px 36px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 22px;
+      }
+
+      .app-icon {
+        order: -1;
+      }
+
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .button-link {
+        width: 100%;
+        box-sizing: border-box;
       }
 
       .step {
@@ -157,19 +288,31 @@
       .step img {
         max-width: 270px;
       }
+
+      .question-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
   <main>
-    <p class="muted">Support</p>
-    <h1>Stocktake Scanner</h1>
-    <p>Stocktake Scanner helps capture bin locations, product labels, quantities, and notes during stock counts, then exports the results to Excel.</p>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Support</p>
+        <h1>Stocktake Scanner</h1>
+        <p>Capture bin locations, product labels, quantities, and notes during stock counts, then export the results to Excel.</p>
+      </div>
+      <img class="app-icon" src="assets/support/app-icon.png" alt="Stocktake Scanner app icon" width="192" height="192">
+    </header>
 
-    <section class="panel">
-      <h2>Contact</h2>
-      <p>For help with Stocktake Scanner, contact Hyspecs support.</p>
-      <p><a href="mailto:stocktake@hyspecs.co.nz">stocktake@hyspecs.co.nz</a></p>
+    <section class="panel contact-panel">
+      <div>
+        <p class="section-kicker">Need help?</p>
+        <h2>Contact Hyspecs support</h2>
+        <p>Send a quick note if you need help with setup, scanning, counts, or exports.</p>
+      </div>
+      <a class="button-link" href="mailto:stocktake@hyspecs.co.nz">stocktake@hyspecs.co.nz</a>
     </section>
 
     <h2>Common Questions</h2>
@@ -214,23 +357,70 @@
       </section>
     </details>
 
-    <ul>
-      <li><strong>The camera will not open:</strong> check iOS Settings, Privacy &amp; Security, Camera, then allow camera access for Stocktake.</li>
-      <li><strong>The wrong text was read:</strong> tap Retake, or edit the product code and description before saving.</li>
-      <li><strong>Large quantities:</strong> tap the quantity number and type the count directly with the keyboard.</li>
-      <li><strong>Exporting:</strong> use the export button on a stocktake to create an Excel workbook and share it with Mail, Files, or another app.</li>
-      <li><strong>iCloud backup:</strong> when iCloud Documents is available, the app writes a backup to the user’s iCloud Documents folder.</li>
-      <li><strong>Changing a stocktake name:</strong> open the stocktake and edit the title or name at the top.</li>
-      <li><strong>Wrong bin location:</strong> tap the saved product row, update the bin location, then save the change.</li>
-      <li><strong>Counting without scanning:</strong> manually enter the product code, description, quantity, and notes before saving.</li>
-      <li><strong>Zero quantity:</strong> a row can be saved with zero when you need to record that a product location was checked but no stock was present.</li>
-      <li><strong>Deleted stocktakes:</strong> deleted stocktakes go to Recently Deleted first, where they can be restored before permanent removal.</li>
-      <li><strong>Export location:</strong> the app creates an Excel file and opens the iOS share sheet so you can send it by Mail, save it to Files, or share it another way.</li>
-      <li><strong>Operator email:</strong> the email address appears on stocktake exports so the count can be traced back to the person or device that created it.</li>
-    </ul>
+    <section class="question-grid" aria-label="Common support answers">
+      <article class="question-card">
+        <h3>The camera will not open</h3>
+        <p>Check iOS Settings, Privacy &amp; Security, Camera, then allow camera access for Stocktake.</p>
+      </article>
+
+      <article class="question-card">
+        <h3>The wrong text was read</h3>
+        <p>Tap Retake, or edit the product code and description before saving.</p>
+      </article>
+
+      <article class="question-card">
+        <h3>Large quantities</h3>
+        <p>Tap the quantity number and type the count directly with the keyboard.</p>
+      </article>
+
+      <article class="question-card">
+        <h3>Exporting</h3>
+        <p>Use the export button on a stocktake to create an Excel workbook and share it with Mail, Files, or another app.</p>
+      </article>
+
+      <article class="question-card">
+        <h3>iCloud backup</h3>
+        <p>When iCloud Documents is available, the app writes a backup to the user’s iCloud Documents folder.</p>
+      </article>
+
+      <article class="question-card">
+        <h3>Changing a stocktake name</h3>
+        <p>Open the stocktake and edit the title or name at the top.</p>
+      </article>
+
+      <article class="question-card">
+        <h3>Wrong bin location</h3>
+        <p>Tap the saved product row, update the bin location, then save the change.</p>
+      </article>
+
+      <article class="question-card">
+        <h3>Counting without scanning</h3>
+        <p>Manually enter the product code, description, quantity, and notes before saving.</p>
+      </article>
+
+      <article class="question-card">
+        <h3>Zero quantity</h3>
+        <p>A row can be saved with zero when you need to record that a product location was checked but no stock was present.</p>
+      </article>
+
+      <article class="question-card">
+        <h3>Deleted stocktakes</h3>
+        <p>Deleted stocktakes go to Recently Deleted first, where they can be restored before permanent removal.</p>
+      </article>
+
+      <article class="question-card">
+        <h3>Export location</h3>
+        <p>The app creates an Excel file and opens the iOS share sheet so you can send it by Mail, save it to Files, or share it another way.</p>
+      </article>
+
+      <article class="question-card">
+        <h3>Operator email</h3>
+        <p>The email address appears on stocktake exports so the count can be traced back to the person or device that created it.</p>
+      </article>
+    </section>
 
     <h2>Privacy</h2>
-    <p>Read the <a href="privacy.html">Stocktake Scanner Privacy Policy</a>.</p>
+    <p><a class="privacy-link" href="privacy.html">Read the Stocktake Scanner Privacy Policy</a></p>
   </main>
 </body>
 </html>
